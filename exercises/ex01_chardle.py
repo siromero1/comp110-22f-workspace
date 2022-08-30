@@ -17,3 +17,4 @@ if letter == user_name [3]:
     print(letter + " found at index 3")
 if letter == user_name [4]:
     print(letter + " found at index 4")
+
