@@ -3,38 +3,49 @@
 __author__ = "730576249"
 
 word: str = input("Enter a 5-character word: ")
+if len(word) > 5:
+    print("Error: Word must contain 5 letters")
+    exit()
+if len(word) < 5:
+    print("Error: Word must contain 5 letters")
+    exit()
 letter: str = input("Enter a single character: ")
+if len(letter) < 1:
+    print("Error: Character must be a single character.")
+    exit()
+if len(letter) > 1:
+    print("Error: Charcter must be a single character.")
+    exit()
 
 print("Searching for " + letter + " in " + word)
 
+count: int = len(letter) - 1
+
 if letter == word[0]:
     print(letter + " found at index 0")
+    count = count + 1
 if letter == word[1]:
     print(letter + " found at index 1")
+    count = count + 1
 if letter == word[2]:
     print(letter + " found at index 2")
+    count = count + 1
 if letter == word[3]:
     print(letter + " found at index 3")
+    count = count + 1
 if letter == word[4]:
     print(letter + " found at index 4")
+    count = count + 1
 
-count: int = len("word")
-
-if letter == count(0):
-    print("No instances of " + letter + "found in " + word)
-if letter == count(1):
-    print("1 instance of " + letter + "found in " + word)
-if letter == count(2):
-    print("2 instances of " + letter + "found in " + word)
-if letter == count(3):
-    print("3 instances of " + letter + "found in " + word)
-if letter == count(4):
-    print("4 instances of " + letter + "found in " + word)
-if letter == count(5):
-    print("5 instances of " + letter + "found in " + word)
-
-char: str
-if char < 5:
-    print("Error: Word must contain 5 characters")
-if char > 5:
-    print("Error: Word must conatin 5 characters")
+if count == 0:
+    print("No instances of " + letter + " found in " + word)
+if count == 1:
+    print("1 instance of " + letter + " found in " + word)
+if count == 2:
+    print("2 instances of " + letter + " found in " + word)
+if count == 3:
+    print("3 instances of " + letter + " found in " + word)
+if count == 4:
+    print("4 instances of " + letter + " found in " + word)
+if count == 5:
+    print("5 instances of " + letter + " found in " + word)
