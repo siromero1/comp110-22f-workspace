@@ -22,11 +22,11 @@ while i < len(guess):  # matching letters in the same index will result in a gre
     else: 
         guess_exists: bool = False
         alt_indicies: int = 0
-        while guess_exists == False and alt_indicies < len(secret_word):
+        while guess_exists is False and alt_indicies < len(secret_word):
             if guess[i] == secret_word[alt_indicies]:  # test if alternate index of the secret word is equal to the current index of the guessed word
                 guess_exists = True
             alt_indicies += 1
-        if guess_exists == True:
+        if guess_exists is True:
             emoji += YELLOW_BOX
         else:
             emoji += WHITE_BOX
