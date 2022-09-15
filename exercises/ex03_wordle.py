@@ -32,6 +32,7 @@ def emojified(guess: str, secret: str) -> str:  # defining emojified to correspo
     return emoji
 
 def input_guess(exp_len: int) -> str:  # comparing the length of secret word to input
+    """Comparing input and secret word length."""
     guess_len: str = input(f"Enter a {exp_len} character word: ")
     while len(guess_len) != exp_len:
         guess_len: str = input(f"That wasn't {exp_len} chars! Try again: ")
@@ -39,8 +40,8 @@ def input_guess(exp_len: int) -> str:  # comparing the length of secret word to 
 
 def main() -> None:  # pulling together the functions
     """The entrypoint of the program and main game loop."""
-    user_input: str = ""
-    secret_word: str = "codes"
+    user_input:str = ""
+    secret_word:str = "codes"
     i: int = 0
     turn_number: int  = 1
     while turn_number <= 6 and user_input != secret_word:
