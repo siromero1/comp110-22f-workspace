@@ -2,6 +2,7 @@
 
 __author__ = "730576249"
 
+
 def contains_char(word: str, character: str) -> bool:  # defining contains_char to find a matching character in the word
     """Finding a matching character in the word."""
     assert len(character) == 1
@@ -11,6 +12,7 @@ def contains_char(word: str, character: str) -> bool:  # defining contains_char 
             return True
         i = i + 1
     return False
+
 
 def emojified(guess: str, secret: str) -> str:  # defining emojified to correspond colored emoji boxes with matching characters
     """Corresponding colored emoji boxes."""
@@ -31,22 +33,23 @@ def emojified(guess: str, secret: str) -> str:  # defining emojified to correspo
         i = i + 1
     return emoji
 
+
 def input_guess(exp_len: int) -> str:  # comparing the length of secret word to input
     """Comparing input and secret word length."""
     guess_len: str = input(f"Enter a {exp_len} character word: ")
     while len(guess_len) != exp_len:
-        guess_len: str = input(f"That wasn't {exp_len} chars! Try again: ")
+        guess_len = input(f"That wasn't {exp_len} chars! Try again: ")
     return guess_len
+
 
 def main() -> None:  # pulling together the functions
     """The entrypoint of the program and main game loop."""
-    user_input:str = ""
-    secret_word:str = "codes"
-    i: int = 0
+    user_input: str = ""
+    secret_word: str = "codes"
     turn_number: int  = 1
     while turn_number <= 6 and user_input != secret_word:
         print(f" === Turn {turn_number}/6 === ")
-        user_input: str = input("Enter a 5 character word: ")
+        user_input = input("Enter a 5 character word: ")
         emoji: str = emojified(user_input, secret_word)
         print(emoji)
         if user_input != secret_word:
@@ -55,8 +58,6 @@ def main() -> None:  # pulling together the functions
         print(f"You won in {turn_number}/6 turns!")
     if user_input != secret_word:
         print("X/6 - Sorry try again tomorrow!")
-
-
 
 if __name__ == "__main__":  # making it possible to run Python program as a module
     main()
