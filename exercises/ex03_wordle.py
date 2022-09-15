@@ -2,9 +2,6 @@
 
 __author__ = "730576249"
 
-from os import access
-
-
 def contains_char(word: str, character: str) -> bool:  # defining contains_char to find a matching character in the word
     """Finding a matching character in the word."""
     assert len(character) == 1
@@ -57,6 +54,8 @@ def main() -> None:  # pulling together the functions
         print(f"You won in {turn_number}/6 turns!")
     if user_input != secret_word:
         print("X/6 - Sorry try again tomorrow!")
+
+
 
 if __name__ == "__main__":  # making it possible to run Python program as a module
     main()
