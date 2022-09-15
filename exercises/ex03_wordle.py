@@ -46,7 +46,7 @@ def main() -> None:  # pulling together the functions
     """The entrypoint of the program and main game loop."""
     user_input: str = ""
     secret_word: str = "codes"
-    turn_number: int  = 1
+    turn_number: int = 1
     while turn_number <= 6 and user_input != secret_word:
         print(f" === Turn {turn_number}/6 === ")
         user_input = input("Enter a 5 character word: ")
@@ -58,6 +58,7 @@ def main() -> None:  # pulling together the functions
         print(f"You won in {turn_number}/6 turns!")
     if user_input != secret_word:
         print("X/6 - Sorry try again tomorrow!")
+
 
 if __name__ == "__main__":  # making it possible to run Python program as a module
     main()
