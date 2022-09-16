@@ -10,4 +10,5 @@ def contains(needle:str, haystack:list[str]) -> bool:
   while i < len(haystack):
     if haystack[i] == needle:
             return True
+    i = i + 1
     return False
