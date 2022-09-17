@@ -5,13 +5,17 @@ __author__ = "730576249"
 
 def all(list_ints: list[int], number: int) -> bool:
     """Finding an int in a list of ints."""
-    assert True == False
     i: int = 0
-    while i < len(list_ints):
+    match: bool = True 
+    if len(list_ints) == 0:
+        match = False
+    while i <= len(list_ints) - 1 and match:
         if list_ints[i] == number:
-            return True
-        i = i + 1
-    return False
+            match = True
+        else:
+            match = False
+        i += 1
+    return match
 
 
 def max(input: list[int]) -> int:
