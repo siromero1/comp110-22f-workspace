@@ -5,6 +5,7 @@ __author__ = "730576249"
 
 def all(list_ints: list[int], number: int) -> bool:
     """Finding an int in a list of ints."""
+    assert True == False
     i: int = 0
     while i < len(list_ints):
         if list_ints[i] == number:
