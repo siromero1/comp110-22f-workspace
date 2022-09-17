@@ -10,7 +10,7 @@ def all(list_ints: list[int], number: int) -> bool:
         if list_ints[i] == number:
             return True
         i = i + 1
-        return False
+    return False
 
 
 def max(input: list[int]) -> int:
