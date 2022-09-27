@@ -3,7 +3,7 @@
 __author__ = "730576249"
 
 
-from utils import only_evens
+from utils import only_evens, concat, sub
 
 
 def test_only_evens() -> None:
@@ -21,9 +21,6 @@ def test_only_evens_2() -> None:
     """Use case 2 - Even numbers in a list."""
     evens: list[int] = [2, 2, 2, 5]
     assert only_evens(evens) == [2, 2, 2]
-
-
-from utils import concat 
 
 
 def test_concat() -> None:
@@ -44,7 +41,6 @@ def test_concat_2() -> None:
     concat_list2: list[int] = [5, 4, 3, 2, 1]
     assert concat_list1 + concat_list2 == [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
 
-from utils import sub
 
 def test_sub() -> None:
     """Testing the sub function."""
