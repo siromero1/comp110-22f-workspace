@@ -22,4 +22,14 @@ def concat(xs: list[int], ys: list[int]) -> list[int]:
 
 def sub(a_list: list[int], start_idx: int, end_idx: int) -> list[int]:
     """Subset of a given list."""
-    return
+    if start_idx < 0:
+        start_idx = 0
+    if end_idx > len(a_list):
+        end_idx = len(a_list)
+    if len(a_list) == 0 or end_idx <= 0 or start_idx > len(a_list):
+        return []
+    new_list: list[int] = []
+    while start_idx < end_idx:
+        new_list.append(a_list[start_idx])
+        start_idx += 1
+    return new_list

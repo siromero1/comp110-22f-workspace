@@ -44,12 +44,16 @@ def test_concat_2() -> None:
 
 def test_sub() -> None:
     """Testing the sub function."""
-    assert sub([]) == []
+    assert sub([], [], []) == []
 
 
 def test_sub_1() -> None:
     """Use case 1 - Testing the sub function."""
+    list_1: list[int] = [10, 20 , 30 , 40]
+    assert sub(list_1, 0, 2) == [10, 20]
 
 
 def test_sub_2() -> None:
     """Use case 2 - Testing the sub function."""
+    a_list_1: list[int] = [5, 10, 15, 20]
+    assert sub(a_list_1, 1, 3) == [10, 15]
