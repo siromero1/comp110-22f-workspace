@@ -49,7 +49,7 @@ def test_sub() -> None:
 
 def test_sub_1() -> None:
     """Use case 1 - Testing the sub function."""
-    list_1: list[int] = [10, 20 , 30 , 40]
+    list_1: list[int] = [10, 20, 30, 40]
     assert sub(list_1, 0, 2) == [10, 20]
 
 
