@@ -11,7 +11,7 @@ player: str = ""
 
 
 def main() -> None:
-    """The entrypoint of the program. """
+    """The entrypoint of the program."""
     greet()
     user_continue: str = input("Would you like to continue (Y/N)? ")
     if user_continue != "Y":
