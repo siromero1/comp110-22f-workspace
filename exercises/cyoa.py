@@ -46,7 +46,7 @@ def users_guess_10(secret_number: int = randint(0, 10)) -> None:
         if compare_guess == secret_number:
             return print(f"Winner{PARTY_EMOJI}! You correctly guessed the secret number!\nTotal points: {points}")
         else:
-            compare_guess: int = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
+            compare_guess = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
             if compare_guess > secret_number:
                 print(f"Guess lower, {player}.")
             if compare_guess < secret_number:
@@ -65,12 +65,12 @@ def users_guess_25(hidden_number: int = randint(0, 25)) -> None:
         if comp_guess == hidden_number:
             return print(f"Winner{PARTY_EMOJI}! You correctly guessed the secret number\nTotal points: {points}")
         else:
-            comp_guess: int = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
+            comp_guess = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
             if comp_guess > hidden_number:
                 print(f"Guess lower, {player}.")
             if comp_guess < hidden_number:
                 print(f"Guess higher, {player}.")
-        points = points - 2.5
+        points = points - 2
     return print(f"Sorry, {player}. You ran out of points! Game over.\nThanks for playing!")
 
 
@@ -84,7 +84,7 @@ def users_guess_50(a_secret_number: int = randint(0, 50)) -> None:
         if comparing_guess == a_secret_number:
             return print(f"Winner{PARTY_EMOJI}! You correctly guessed the secret number\nTotal points: {points}")
         else:
-            comparing_guess: int = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
+            comparing_guess = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
             if comparing_guess > a_secret_number:
                 print(f"Guess lower, {player}.")
             if comparing_guess < a_secret_number:
