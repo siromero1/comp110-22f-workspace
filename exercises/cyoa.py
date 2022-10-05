@@ -36,7 +36,7 @@ def greet() -> None:
     print(f"Welcome {player}{HEART_EMOJI}\nThe goal is to guess the secret number is least amount of guesses possible.\nThe secret number is a randomly generated number 0 to 10.\nA point is deducted after each guess.")
 
 
-def users_guess_10(secret_number: int = randint(0, 10)) -> None:
+def users_guess_10(secret_number: int = randint(0, 10)) -> int:
     """Easy difficulty game option."""
     compare_guess: int = int(input("What is your guess (0-10)? "))
     PARTY_EMOJI: str = "\U0001F973"
@@ -44,7 +44,8 @@ def users_guess_10(secret_number: int = randint(0, 10)) -> None:
     points = 10
     while points > 0:
         if compare_guess == secret_number:
-            return print(f"Winner{PARTY_EMOJI}! You correctly guessed the secret number!\nTotal points: {points}")
+            print(f"Winner{PARTY_EMOJI}! You correctly guessed the secret number!\nTotal points: {points}")
+            return points
         else:
             compare_guess = int(input(f"Sorry {player}, that is incorrect. Guess again: "))
             if compare_guess > secret_number:
@@ -52,7 +53,8 @@ def users_guess_10(secret_number: int = randint(0, 10)) -> None:
             if compare_guess < secret_number:
                 print(f"Guess higher, {player}.")
         points = points - 1
-    return print(f"Sorry, {player}. You ran out of points! Game over.\nThanks for playing!")
+    print(f"Sorry, {player}. You ran out of points! Game over.\nThanks for playing!")
+    return points
 
 
 def users_guess_25(hidden_number: int = randint(0, 25)) -> None:
