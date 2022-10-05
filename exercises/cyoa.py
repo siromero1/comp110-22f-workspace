@@ -25,7 +25,7 @@ def main() -> None:
         users_guess_50()
     if level_input == "end game":
         print("Game over. Have a good day!")
-        return None
+    return points
 
 
 def greet() -> None:
