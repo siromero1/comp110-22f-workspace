@@ -36,7 +36,7 @@ def greet() -> None:
     print(f"Welcome {player}{HEART_EMOJI}\nThe goal is to guess the secret number is least amount of guesses possible.\nThe secret number is a randomly generated number 0 to 10.\nA point is deducted after each guess.")
 
 
-def users_guess_10(secret_number: int = randint(0, 10), total_points: int = "") -> int:
+def users_guess_10(secret_number: int = randint(0, 10), total_points: int = 0) -> int:
     """Easy difficulty game option."""
     compare_guess: int = int(input("What is your guess (0-10)? "))
     PARTY_EMOJI: str = "\U0001F973"
