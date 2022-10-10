@@ -7,6 +7,7 @@ def main() -> None:
     """Main function."""
     print(favorite_color)
 
+
 def invert(dict_1: dict[str, str]) -> dict[str, str]:
     """Inverting the keys and values."""
     flip: dict[str, str] = {}
