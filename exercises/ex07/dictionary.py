@@ -18,5 +18,16 @@ def invert(dict_1: dict[str, str]) -> dict[str, str]:
     return flip
 
 
+def count(value_list: list[str]) -> dict[str, int]:
+    """Counting the time a value appears in input list."""
+    result: dict[str, int] = {}
+    for key in value_list:
+        if key in result:
+            result[key] += 1
+        else:
+            result[key] = 1
+    return result
+
+
 def favorite_color(colors: dict[str, str]) -> str:
     """Finding the most common favorite color."""
