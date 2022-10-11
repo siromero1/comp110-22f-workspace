@@ -3,7 +3,7 @@
 __author__ = "730576249"
 
 
-from dictionary import invert, count
+from dictionary import invert, favorite_color, count
 import pytest
 
 
@@ -39,6 +39,23 @@ def test_count_2() -> None:
     """Use case 2 - Counting frequency."""
     list_2: list[str] = ['pasta', 'sushi', 'pasta', 'pizza']
     assert count(list_2) == {'pasta': 2, 'sushi': 1, 'pizza': 1}
+
+
+def test_favorite_color() -> None:
+    """Finding the favorite color."""
+    assert favorite_color({}) == ""
+
+
+def test_favorite_color_1() -> None:
+    """Use case 1 - Finding the favorite color."""
+    colors_1: dict[str, str] = {'Sophia': 'pink', 'John': 'blue', 'Mary': 'pink'}
+    assert favorite_color(colors_1) == 'pink'
+
+
+def test_favorite_color_2() -> None:
+    """Use case 2 - Finding the favorite color."""
+    colors_2: dict[str, str] = {'Sally': 'purple', 'Jack': 'red', 'Bob': 'red', 'Beth': 'purple'}
+    assert favorite_color(colors_2) == 'purple'
 
 
 with pytest.raises(KeyError):
