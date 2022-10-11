@@ -3,6 +3,10 @@
 __author__ = "730576249"
 
 
+def main() -> None:
+    print(favorite_color({"Marc": "yellow", "Ezri": "blue", "Kris": "blue"}))
+
+
 def invert(dict_1: dict[str, str]) -> dict[str, str]:
     """Inverting the keys and values."""
     flip: dict[str, str] = {}
@@ -27,7 +31,7 @@ def count(value_list: list[str]) -> dict[str, int]:
 def favorite_color(colors: dict[str, str]) -> str:
     """Finding the most common favorite color."""
     fav_color: dict[str, int] = {}
-    the_fav_color: str = ""
+    the_fav_color: str = " "
     frequency: int = 0
     for key in colors:
         if colors[key] in fav_color:
@@ -35,11 +39,11 @@ def favorite_color(colors: dict[str, str]) -> str:
         else:
             fav_color[colors[key]] = 1
     for key in fav_color:
-        int_color = fav_color[key]
-        if int_color > frequency:
+        if fav_color[key] > frequency:
             frequency = fav_color[key]
-            frequency = key
+            the_fav_color = key
     return the_fav_color
 
 
-print(favorite_color({"Marc": "yellow", "Ezri": "blue", "Kris": "blue"}))
+if __name__ == "__main__":
+    main()
