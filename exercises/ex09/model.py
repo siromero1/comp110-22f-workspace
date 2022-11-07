@@ -25,7 +25,7 @@ class Point:
         y: float = self.y + other.y
         return Point(x, y)
     
-    def distance(self) -> float:
+    def distance(self, other_point: Point) -> float:
         """Finding the distance between two points."""
         from math import sqrt
         dist: float = sqrt(((self.x - Point.x) ** 2) + ((self.y - Point.y) ** 2))
