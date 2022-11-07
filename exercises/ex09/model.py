@@ -14,7 +14,6 @@ class Point:
     x: float
     y: float
 
-
     def __init__(self, x: float, y: float):
         """Construct a point with x, y coordinates."""
         self.x = x
@@ -27,8 +26,9 @@ class Point:
         return Point(x, y)
     
     def distance(self) -> float:
+        """Finding the distance between two points."""
         from math import sqrt
-        dist: float = sqrt(((self.x - self.x) ** 2) + ((self.y - self.y) ** 2))
+        dist: float = sqrt(((self.x - Point.x) ** 2) + ((self.y - Point.y) ** 2))
         return dist
 
 
@@ -48,13 +48,14 @@ class Cell:
     # the result of adding the self object's location with its
     # direction. Hint: Look at the add method.
     def tick(self) -> None:
+        """Reassign the object's location attribute."""
         self.location = self.location.add(self.direction)
         
     def color(self) -> str:
         """Return the color representation of a cell."""
-        if self.is_vulnerable() == True:
+        if self.is_vulnerable() is True:
             return "gray"
-        if self.is_infected() == True:
+        if self.is_infected() is True:
             return "red"
         return "black"
     
@@ -75,7 +76,6 @@ class Cell:
             return True
         else:
             return False
-
 
 
 class Model:
@@ -114,7 +114,7 @@ class Model:
         """Generate a 'point' used as a directional vector."""
         random_angle: float = 2.0 * pi * random()
         direction_x: float = cos(random_angle) * speed
-        direction_y: float =  sin(random_angle) * speed
+        direction_y: float = sin(random_angle) * speed
         return Point(direction_x, direction_y)
 
     def enforce_bounds(self, cell: Cell) -> None:
