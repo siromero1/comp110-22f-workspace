@@ -93,7 +93,7 @@ class Cell:
         """Making the cell immune."""
         self.sickness = constants.IMMUNE
     
-    def is_immmune(self) -> bool:
+    def is_immune(self) -> bool:
         """Checking if cell is immune."""
         if self.sickness is constants.IMMUNE:
             return True
