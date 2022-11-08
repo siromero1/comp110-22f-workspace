@@ -46,7 +46,7 @@ class ViewController:
             self.pen.dot(constants.CELL_RADIUS)
         self.screen.update()
 
-        if self.model.is_complete():
+        if self.model.is_complete() is True:
             return
         else:
             end_time = time_ns() // NS_TO_MS

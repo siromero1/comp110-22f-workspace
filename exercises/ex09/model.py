@@ -50,16 +50,19 @@ class Cell:
     def tick(self) -> None:
         """Reassign the object's location attribute."""
         self.location = self.location.add(self.direction)
+        if self.is_infected():
+            self.sickness += 1
+            if self.sickness > constants.RECOVERY_PERIOD:
+                self.immunize()
         
     def color(self) -> str:
         """Return the color representation of a cell."""
-        if self.is_vulnerable() is True:
+        if self.is_vulnerable():
             return "gray"
-        if self.is_infected() is True:
+        if self.is_infected():
             return "red"
-        if self.is_immune() is True:
+        else:
             return "pink"
-        return "black"
     
     def contract_disease(self) -> None:
         """Representing sickness."""
@@ -74,7 +77,7 @@ class Cell:
     
     def is_infected(self) -> bool:
         """Is the cell infected?"""
-        if self.sickness == constants.INFECTED:
+        if self.sickness >= constants.INFECTED:
             return True
         else:
             return False
@@ -87,11 +90,15 @@ class Cell:
             self.contract_disease()
     
     def immunize(self) -> None:
-        constants.IMMUNE = self.sickness
+        """Making the cell immune."""
+        self.sickness = constants.IMMUNE
     
     def is_immmune(self) -> bool:
+        """Checking if cell is immune."""
         if self.sickness == constants.IMMUNE:
             return True
+        else:
+            return False
 
 
 class Model:
@@ -100,19 +107,20 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int):
+    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int = 0):
         """Initialize the cells with random locations and directions."""
         self.population = []
-        immune_num: immune_num = 0
+        if (infection_num >= cells) or infection_num <= 0:
+                raise ValueError("Some number of Cell objects must be infected.")
+        if (immune_num >= cells) or (immune_num >= infection_num):
+                raise ValueError("Improper number of immmune or infected cells.")
         for _ in range(0, cells):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
             cell: Cell = Cell(start_location, start_direction)
             self.population.append(cell)
-            if _ < infection_num:
-                cell.contract_disease()
-            if (infection_num >= cells) or infection_num <= 0:
-                raise ValueError("Some number of Cell objects must be infected.")
+        for i in range(0, infection_num):
+            self.population[i].contract_disease()
 
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
@@ -120,7 +128,7 @@ class Model:
         for cell in self.population:
             cell.tick()
             self.enforce_bounds(cell)
-        Model.check_contacts(self)
+        self.check_contacts()
 
     def random_location(self) -> Point:
         """Generate a random location."""
@@ -150,10 +158,6 @@ class Model:
             cell.location.y = constants.MIN_Y
             cell.direction.y *= -1.0
 
-    def is_complete(self) -> bool:
-        """Method to indicate when the simulation is complete."""
-        return False
-    
     def check_contacts(self) -> None:
         """Checking if two cells came into contact."""
         for cell in range(len(self.population)):
@@ -162,3 +166,10 @@ class Model:
                 second_cell: Cell = self.population[cell_2]
                 if first_cell.location.distance(second_cell.location) < constants.CELL_RADIUS:
                     first_cell.contact_with(second_cell)
+    
+    def is_complete(self) -> bool:
+        """Running simulation through completion."""
+        for cell in self.population:
+            if cell.is_infected():
+                return False
+        return True
