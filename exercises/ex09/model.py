@@ -170,9 +170,9 @@ class Model:
     def is_complete(self) -> bool:
         """Running simulation through completion."""
         for cell in self.population:
-            if cell.is_infected is True:
+            if cell.is_infected() is True:
                 return False
-            if cell.is_vulnerable is True:
+            if cell.is_vulnerable() is True:
                 return True
-            if cell.is_immune is True:
+            if cell.is_immune() is True:
                 return True
