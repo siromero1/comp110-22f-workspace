@@ -107,10 +107,12 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int = 0):
+    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int = 2):
         """Initialize the cells with random locations and directions."""
         self.population = []
-        if (infection_num >= cells) or (infection_num <= 0):
+        if (infection_num >= cells):
+            raise ValueError("Some number of Cell objects must be infected.")
+        if (infection_num <= 0):
             raise ValueError("Some number of Cell objects must be infected.")
         for _ in range(0, cells):
             start_location: Point = self.random_location()
@@ -168,7 +170,7 @@ class Model:
     def is_complete(self) -> bool:
         """Running simulation through completion."""
         for cell in self.population:
-            if cell.is_infected() is True:
+            if cell.is_infected():
                 return False
             if cell.is_vulnerable() is True:
                 return True
