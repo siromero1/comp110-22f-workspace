@@ -110,7 +110,7 @@ class Model:
     def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int = 0):
         """Initialize the cells with random locations and directions."""
         self.population = []
-        if (infection_num >= cells) or (infection_num <= 0) or (immune_num >= infection_num):
+        if (infection_num >= cells) or (infection_num <= 0):
             raise ValueError("Some number of Cell objects must be infected.")
         for _ in range(0, cells):
             start_location: Point = self.random_location()
