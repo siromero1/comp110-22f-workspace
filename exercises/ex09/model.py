@@ -61,7 +61,7 @@ class Cell:
             return "gray"
         if self.is_infected():
             return "red"
-        else:
+        if self.is_immune():
             return "pink"
     
     def contract_disease(self) -> None:
@@ -111,9 +111,9 @@ class Model:
         """Initialize the cells with random locations and directions."""
         self.population = []
         if (infection_num >= cells) or infection_num <= 0:
-                raise ValueError("Some number of Cell objects must be infected.")
+            raise ValueError("Some number of Cell objects must be infected.")
         if (immune_num >= cells) or (immune_num >= infection_num):
-                raise ValueError("Improper number of immmune or infected cells.")
+            raise ValueError("Improper number of immmune or infected cells.")
         for _ in range(0, cells):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
