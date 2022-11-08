@@ -57,11 +57,11 @@ class Cell:
         
     def color(self) -> str:
         """Return the color representation of a cell."""
-        if self.is_vulnerable is True:
+        if self.is_vulnerable() is True:
             return "gray"
-        if self.is_infected is True:
+        if self.is_infected() is True:
             return "red"
-        if self.is_immune is True:
+        if self.is_immune() is True:
             return "pink"
     
     def contract_disease(self) -> None:
