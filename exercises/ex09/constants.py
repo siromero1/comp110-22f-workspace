@@ -19,5 +19,6 @@ INFECTED: int = 1
 IMMUNE: int = -1
 
 START_INFECTED: int = 3
+START_IMMUNE: int = 3
 
 RECOVERY_PERIOD: int = 90

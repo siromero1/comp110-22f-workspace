@@ -107,13 +107,15 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int = 2):
+    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int = 0):
         """Initialize the cells with random locations and directions."""
         self.population = []
         if (infection_num >= cells):
             raise ValueError("Some number of Cell objects must be infected.")
         if (infection_num <= 0):
             raise ValueError("Some number of Cell objects must be infected.")
+        if immune_num >= cells or immune_num < 0:
+            raise ValueError("error")
         for _ in range(0, cells):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
@@ -121,6 +123,8 @@ class Model:
             self.population.append(cell)
         for i in range(0, infection_num):
             self.population[i].contract_disease()
+        for x in range(infection_num, infection_num + immune_num):
+            self.population[x].immunize()
 
     def tick(self) -> None:
         """Update the state of the simulation by one time step."""
@@ -172,7 +176,4 @@ class Model:
         for cell in self.population:
             if cell.is_infected():
                 return False
-            if cell.is_vulnerable() is True:
-                return True
-            if cell.is_immune() is True:
-                return True
+        return True
