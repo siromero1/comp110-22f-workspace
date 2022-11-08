@@ -57,11 +57,11 @@ class Cell:
         
     def color(self) -> str:
         """Return the color representation of a cell."""
-        if self.is_vulnerable():
+        if self.is_vulnerable is True:
             return "gray"
-        if self.is_infected():
+        if self.is_infected is True:
             return "red"
-        if self.is_immune():
+        if self.is_immune is True:
             return "pink"
     
     def contract_disease(self) -> None:
@@ -170,6 +170,9 @@ class Model:
     def is_complete(self) -> bool:
         """Running simulation through completion."""
         for cell in self.population:
-            if cell.is_infected():
+            if cell.is_infected is True:
                 return False
-        return True
+            if cell.is_vulnerable is True:
+                return True
+            if cell.is_immune is True:
+                return True
