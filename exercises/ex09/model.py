@@ -76,6 +76,13 @@ class Cell:
             return True
         else:
             return False
+    
+    def contact_with(self, other_cell: Cell) -> None:
+        """Two Cell objects make contact."""
+        if self.is_infected() and other_cell.is_vulnerable():
+            other_cell.contract_disease()
+        if other_cell.is_infected() and self.is_vulnerable():
+            self.contract_disease()
 
 
 class Model:
@@ -103,6 +110,7 @@ class Model:
         for cell in self.population:
             cell.tick()
             self.enforce_bounds(cell)
+        Model.check_contacts(self)
 
     def random_location(self) -> Point:
         """Generate a random location."""
@@ -135,3 +143,11 @@ class Model:
     def is_complete(self) -> bool:
         """Method to indicate when the simulation is complete."""
         return False
+    
+    def check_contacts(self) -> None:
+        for cell in range(len(self.population)):
+            for cell_2 in range(cell + 1, len(self.population)):
+                first_cell: Cell = self.population[cell]
+                second_cell: Cell = self.population[cell_2]
+                if first_cell.location.distance(second_cell.location) < constants.CELL_RADIUS:
+                    first_cell.contact_with(second_cell)
