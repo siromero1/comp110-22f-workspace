@@ -57,6 +57,8 @@ class Cell:
             return "gray"
         if self.is_infected() is True:
             return "red"
+        if self.is_immune() is True:
+            return "pink"
         return "black"
     
     def contract_disease(self) -> None:
@@ -83,6 +85,13 @@ class Cell:
             other_cell.contract_disease()
         if other_cell.is_infected() and self.is_vulnerable():
             self.contract_disease()
+    
+    def immunize(self) -> None:
+        constants.IMMUNE = self.sickness
+    
+    def is_immmune(self) -> bool:
+        if self.sickness == constants.IMMUNE:
+            return True
 
 
 class Model:
@@ -91,9 +100,10 @@ class Model:
     population: list[Cell]
     time: int = 0
 
-    def __init__(self, cells: int, speed: float, infection_num: int):
+    def __init__(self, cells: int, speed: float, infection_num: int, immune_num: int):
         """Initialize the cells with random locations and directions."""
         self.population = []
+        immune_num: immune_num = 0
         for _ in range(0, cells):
             start_location: Point = self.random_location()
             start_direction: Point = self.random_direction(speed)
@@ -145,6 +155,7 @@ class Model:
         return False
     
     def check_contacts(self) -> None:
+        """Checking if two cells came into contact."""
         for cell in range(len(self.population)):
             for cell_2 in range(cell + 1, len(self.population)):
                 first_cell: Cell = self.population[cell]
