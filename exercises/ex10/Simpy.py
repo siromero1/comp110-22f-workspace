@@ -25,7 +25,7 @@ class Simpy:
         for number in range(0, amount):
             self.values.append(insert_num)
     
-    def arange(self, start: float, stop: float, step: float = 1.0):
+    def arange(self, start: float, stop: float, step: float = 1.0) -> None:
         """Fill Simpy's values with a range of values in increments."""
         assert step != 0.0
         while start < stop:
