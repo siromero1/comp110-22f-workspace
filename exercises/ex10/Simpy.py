@@ -8,6 +8,7 @@ __author__ = "730576249"
 
 
 class Simpy:
+    """Initialize values attribute."""
     values: list[float]
 
     def __init__(self, values: list[float]) -> None:
@@ -109,13 +110,12 @@ class Simpy:
     
     def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Returning a specific item from Simpy object."""
-        i: int = 0
-        result: list[bool] = []
+        result: list[float] = []
         if isinstance(rhs, int):
             for item in self.values:
                 result.append(rhs)
         else:
-            for items in self.values:
-                result.append(rhs[i])
-                i += 1
-        return f"Simpy({result})" 
+            for items in range(len(rhs)):
+                if rhs[items] is True:
+                    result.append(self.values[items])
+        return f"Simpy({result})"
