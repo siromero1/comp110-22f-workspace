@@ -110,12 +110,11 @@ class Simpy:
     
     def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Returning a specific item from Simpy object."""
-        result: list[float] = []
+        result: Simpy = Simpy([])
         if isinstance(rhs, int):
-            for item in self.values:
-                result.append(rhs)
+            return self.values[rhs]
         else:
             for items in range(len(rhs)):
                 if rhs[items] is True:
-                    result.append(self.values[items])
-        return f"Simpy({result})"
+                    result.values.append(self.values[items])
+        return result
